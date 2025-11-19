@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="heart-straight-fill-svgrepo-com.svg" type="image/svg+xml">
     <title>Ly toto R</title>
     <style>
         * {
@@ -17,6 +18,7 @@
             font-family: 'Arial', sans-serif;
             overflow: hidden;
             position: relative;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .button {
@@ -35,12 +37,20 @@
             opacity: 0;
             pointer-events: none;
             transform: scale(0.8);
+            touch-action: manipulation;
+            min-width: 120px;
+            text-align: center;
         }
 
         .button:hover {
             background: rgba(255, 255, 255, 0.3);
             transform: scale(1.05);
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .button:active {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0.95);
         }
 
         .button.active {
@@ -140,6 +150,113 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        /* Media Queries para Mobile */
+        @media screen and (max-width: 768px) {
+            .button {
+                padding: 18px 25px;
+                font-size: 16px;
+                min-width: 140px;
+                border-width: 2px;
+            }
+
+            /* Botão 2 - Canto superior direito */
+            .button-top-right {
+                top: 15px;
+                right: 15px;
+                padding: 15px 20px;
+                font-size: 15px;
+            }
+
+            /* Botão 3 - Canto inferior direito */
+            .button-bottom-right {
+                bottom: 15px;
+                right: 15px;
+                padding: 15px 20px;
+                font-size: 14px;
+            }
+
+            .final-message {
+                padding: 0 20px;
+                width: 90%;
+                max-width: 400px;
+            }
+
+            .final-message h1 {
+                font-size: 36px;
+                margin-bottom: 15px;
+            }
+
+            .final-message h2 {
+                font-size: 24px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .button {
+                padding: 16px 20px;
+                font-size: 15px;
+                min-width: 130px;
+            }
+
+            /* Botão 2 - Canto superior direito */
+            .button-top-right {
+                top: 10px;
+                right: 10px;
+                padding: 14px 18px;
+                font-size: 14px;
+                min-width: 120px;
+            }
+
+            /* Botão 3 - Canto inferior direito */
+            .button-bottom-right {
+                bottom: 10px;
+                right: 10px;
+                padding: 14px 18px;
+                font-size: 13px;
+                min-width: 140px;
+            }
+
+            .final-message {
+                padding: 0 15px;
+                width: 95%;
+            }
+
+            .final-message h1 {
+                font-size: 32px;
+                margin-bottom: 12px;
+            }
+
+            .final-message h2 {
+                font-size: 22px;
+            }
+        }
+
+        @media screen and (max-width: 360px) {
+            .button {
+                padding: 14px 18px;
+                font-size: 14px;
+                min-width: 120px;
+            }
+
+            .button-top-right {
+                font-size: 13px;
+                min-width: 110px;
+            }
+
+            .button-bottom-right {
+                font-size: 12px;
+                min-width: 130px;
+            }
+
+            .final-message h1 {
+                font-size: 28px;
+            }
+
+            .final-message h2 {
+                font-size: 20px;
             }
         }
     </style>
