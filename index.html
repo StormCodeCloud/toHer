@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ly toto R</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .button {
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: absolute;
+            opacity: 0;
+            pointer-events: none;
+            transform: scale(0.8);
+        }
+
+        .button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .button.active {
+            opacity: 1;
+            pointer-events: all;
+            transform: scale(1);
+            animation: fadeInButton 0.5s ease;
+        }
+
+        @keyframes fadeInButton {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Botão 1 - Centro */
+        .button-center {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .button-center.active {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        /* Botão 2 - Canto superior direito */
+        .button-top-right {
+            top: 20px;
+            right: 20px;
+        }
+
+        /* Botão 3 - Canto inferior direito */
+        .button-bottom-right {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        /* Mensagem final */
+        .final-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .final-message.active {
+            opacity: 1;
+            animation: fadeInMessage 0.8s ease;
+        }
+
+        .final-message h1 {
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+
+        .final-message h2 {
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+        }
+
+        .final-message h2.show {
+            opacity: 1;
+            animation: fadeInSecond 0.8s ease;
+        }
+
+        @keyframes fadeInMessage {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -60%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        @keyframes fadeInSecond {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Botão 1 - Centro -->
+    <button class="button button-center active" id="btn1" onclick="showButton2()">
+        clique aqui
+    </button>
+
+    <!-- Botão 2 - Canto superior direito -->
+    <button class="button button-top-right" id="btn2" onclick="showButton3()">
+        afinal é aqui
+    </button>
+
+    <!-- Botão 3 - Canto inferior direito -->
+    <button class="button button-bottom-right" id="btn3" onclick="showFinalMessage()">
+        desculpa afinal é aqui
+    </button>
+
+    <!-- Mensagem final -->
+    <div class="final-message" id="finalMessage">
+        <h1>good girl</h1>
+        <h2 id="secondMessage">ly toto &lt;3</h2>
+    </div>
+
+    <script>
+        function showButton2() {
+            // Esconder botão 1
+            document.getElementById('btn1').classList.remove('active');
+            
+            // Mostrar botão 2 após um pequeno delay
+            setTimeout(() => {
+                document.getElementById('btn2').classList.add('active');
+            }, 300);
+        }
+
+        function showButton3() {
+            // Esconder botão 2
+            document.getElementById('btn2').classList.remove('active');
+            
+            // Mostrar botão 3 após um pequeno delay
+            setTimeout(() => {
+                document.getElementById('btn3').classList.add('active');
+            }, 300);
+        }
+
+        function showFinalMessage() {
+            // Esconder botão 3
+            document.getElementById('btn3').classList.remove('active');
+            
+            // Mostrar mensagem final após um pequeno delay
+            setTimeout(() => {
+                document.getElementById('finalMessage').classList.add('active');
+                
+                // Mostrar segunda mensagem após 2 segundos
+                setTimeout(() => {
+                    document.getElementById('secondMessage').classList.add('show');
+                }, 2000);
+            }, 300);
+        }
+    </script>
+</body>
+</html>
+
